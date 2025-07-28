@@ -1,24 +1,15 @@
-"""
-Autor: valentina mancilla
-Fecha: 2025-07-27
-Descripción: torneo de futbol 2.0 ligabet play
-"""
-import json
+import sys
 import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-# Configuración y funciones utilitarias
-from ..config import DB_FILE
-from utils.validatedata import validateInt, validatetext, validateflot
-from utils.screencontrollers import pausar_pantalla, limpiar_pantalla
-from utils.corefiles import readJson, writeJson, updateJson, deleteJson, initializeJson
-
-# Controladores de funciones principales
-from controllers import equipos, jugadores, transferencias, estadisticas
+import controllers.equipos as equipos
+import controllers.jugadores as jugadores
+import controllers.transferencias as transferencias
+import controllers.estadisticas as estadisticas
 
 def menu():
     while True:
-        limpiar_pantalla()
-        print("=== GESTOR DE TORNEOS INTERNACIONALES ===")
+        print("\n=== GESTOR DE TORNEOS INTERNACIONALES ===")
         print("1. Registrar equipo")
         print("2. Listar equipos")
         print("3. Registrar jugador")
@@ -27,32 +18,26 @@ def menu():
         print("6. Ver estadísticas")
         print("0. Salir")
 
-        opcion = input("\nSeleccione una opción: ").strip()
+        opcion = input("Seleccione una opción: ").strip()
 
         if opcion == "1":
             equipos.registrar_equipo()
-            pausar_pantalla()
         elif opcion == "2":
             equipos.listar_equipos()
-            pausar_pantalla()
         elif opcion == "3":
             jugadores.registrar_jugador()
-            pausar_pantalla()
         elif opcion == "4":
             jugadores.listar_jugadores()
-            pausar_pantalla()
         elif opcion == "5":
-            transferencias.transferir_jugador()
-            pausar_pantalla()
+            transferencias.realizar_transferencia()
+            transferencias.listar_transferencias()
         elif opcion == "6":
             estadisticas.ver_estadisticas()
-            pausar_pantalla()
         elif opcion == "0":
-            print("👋 Saliendo del sistema...")
+            print("¡Hasta luego!")
             break
         else:
-            print("❌ Opción inválida.")
-            pausar_pantalla()
+            print("Opción inválida. Intenta de nuevo.")
 
 if __name__ == "__main__":
     menu()

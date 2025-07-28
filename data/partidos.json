@@ -1,13 +1,12 @@
 {
-    "partidos":{
-        "8768":{
-            "nombre":"",
-            "pais":"",
-            "fecha inicio":"",
-            "fecha final":""
-            
-        }
-
-    }
+  "1": {
+    "id": 1,
+    "torneo_id": 1,
+    "equipo_local": 1,
+    "equipo_visitante": 2,
+    "fecha": "2024-08-15",
+    "goles_local": 2,
+    "goles_visitante": 1
+  }
 }
  

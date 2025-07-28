@@ -1,12 +1,7 @@
 {
-    "ligas":{
-        "8768":{
-            "nombre":"",
-            "pais":"",
-            "fecha inicio":"",
-            "fecha final":""
-            
-        }
-
-    }
+  "1": {
+    "id": 1,
+    "nombre": "La Liga",
+    "pais": "España"
+  }
 }

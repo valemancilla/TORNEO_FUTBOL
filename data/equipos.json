@@ -1,16 +1,23 @@
 {
-    "equipos": {
-        "0425": {
-            "Nombre": "",
-            "fundacion": "",
-            "País": "",
-            "idliga": ""
-        }
+    "1": {
+        "id": 1,
+        "nombre": "Real Madrid",
+        "fundacion": "1902-03-06",
+        "pais": "España",
+        "liga_id": "1"
     },
-    "2143": {
-        "nombre": "s",
-        "fundacion": 33,
-        "pais": "s",
-        "idliga": 33
+    "2": {
+        "id": 2,
+        "nombre": "j",
+        "fundacion": "j3",
+        "pais": "jj",
+        "liga_id": "333"
+    },
+    "3": {
+        "id": 3,
+        "nombre": "juan",
+        "fundacion": "agosto 13",
+        "pais": "col",
+        "liga_id": "11"
     }
 }

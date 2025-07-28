@@ -1,14 +1,7 @@
 import os
-import sys
+
+def limpiar_pantalla():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def pausar_pantalla():
-    if sys.platform=="linux" or sys.platform=="darwin":
-        input('...')
-    else:
-        os.system('pause')
-        
-def limpiar_pantalla():
-    if sys.platform=="linux" or sys.platform=="darwin":
-        os.system('clear')
-    else:
-        os.system('cls')
+    input("\nPresiona ENTER para continuar...")

@@ -1,12 +1,9 @@
 {
-    "transferencias":{
-        "3027":{
-            "ID del jugador transferido":"",
-            "Equipo de origen":"",
-            "Equipo de destino":"",
-            "Tipo de transferencia":"",
-            "Fecha de transferencia":""
-        }
-
-    }
+  "1": {
+    "id_jugador": "1",
+    "origen": "1",
+    "destino": "2",
+    "tipo": "venta",
+    "fecha": "2024-07-01"
+  }
 }

@@ -1,50 +1,43 @@
 import os
-import json
 from utils.corefiles import leer_json, guardar_json
 from utils.validatedata import input_obligatorio
 
-
-
-RUTA_EQUIPOS = os.path.join("data", "equipos.json")
+RUTA = os.path.join("data", "equipos.json")
 
 def registrar_equipo():
-    print("\n=== Registro de Nuevo Equipo ===")
-    
-    nombre = input_obligatorio("📌 Nombre del equipo: ")
-    fundacion = input_obligatorio("📅 Fecha de fundación (ej: 1947-03-07): ")
-    pais = input_obligatorio("🌍 País: ")
-    liga_id = input_obligatorio("🏷 ID de la liga: ")
+    print("\n📘 Registro de Equipo")
+    nombre = input_obligatorio("Nombre: ")
+    fundacion = input_obligatorio("Fecha de fundación (AAAA-MM-DD): ")
+    pais = input_obligatorio("País: ")
+    liga_id = input_obligatorio("ID de liga: ")
 
-    # Leer archivo de equipos
-    equipos = leer_json(RUTA_EQUIPOS)
+    equipos = leer_json(RUTA)
 
-    
-    nuevo_equipo = {
-        "id": len(equipos) + 1,
+    nuevo_id = str(len(equipos) + 1)
+
+    nuevo = {
+        "id": int(nuevo_id),
         "nombre": nombre,
         "fundacion": fundacion,
         "pais": pais,
         "liga_id": liga_id
     }
 
-    # Agregar y guardar
-    equipos.append(nuevo_equipo)
-    guardar_json(RUTA_EQUIPOS, equipos)
+    equipos[nuevo_id] = nuevo
+    guardar_json(RUTA, equipos)
     print("✅ Equipo registrado correctamente.")
 
 def listar_equipos():
-    equipos = leer_json(RUTA_EQUIPOS)
-    
+    equipos = leer_json(RUTA)
     if not equipos:
-        print("\n📭 No hay equipos registrados.")
+        print("📭 No hay equipos registrados.")
         return
 
     print("\n📋 Lista de Equipos Registrados:\n")
     print("{:<5} {:<25} {:<15} {:<15} {:<10}".format("ID", "Nombre", "Fundación", "País", "Liga"))
     print("-" * 75)
-    
-    for eq in equipos:
+
+    for eq in equipos.values():
         print("{:<5} {:<25} {:<15} {:<15} {:<10}".format(
             eq["id"], eq["nombre"], eq["fundacion"], eq["pais"], eq["liga_id"]
         ))
-

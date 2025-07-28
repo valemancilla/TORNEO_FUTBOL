@@ -1,12 +1,8 @@
 {
-    "dirigentes":{
-        "4567":{
-            "presidente":"",
-            "vicepresidente":"",
-            "cuerpo tecnico":"",
-            "cuerpo medico":""
-            
-        }
-
-    }
+  "1": {
+    "id": 1,
+    "nombre": "Florentino Pérez",
+    "rol": "Presidente",
+    "equipo_id": "1"
+  }
 }

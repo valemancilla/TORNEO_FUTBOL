@@ -1,31 +1,51 @@
-from utils.corefiles import leer_json, guardar_json
 import os
-import json
+from utils.corefiles import leer_json, guardar_json
+from utils.validatedata import input_obligatorio
 
-RUTA_JUGADORES = os.path.join("data", "jugadores.json")
+RUTA = os.path.join("data", "jugadores.json")
+RUTA_EQUIPOS = os.path.join("data", "equipos.json")
 
 def registrar_jugador():
-    nombre = input("Nombre del jugador: ")
-    posicion = input("Posición: ")
-    dorsal = input("Número dorsal: ")
-    equipo_id = input("ID del equipo: ")
+    print("\n👤 Registro de Jugador")
+    nombre = input_obligatorio("Nombre: ")
+    posicion = input_obligatorio("Posición: ")
+    numero = input_obligatorio("Número dorsal: ")
+    equipo_id = input_obligatorio("ID del equipo: ")
 
-    jugadores = leer_json(RUTA_JUGADORES)
+    equipos = leer_json(RUTA_EQUIPOS)
+    if equipo_id not in equipos:
+        print("⚠️ El equipo no existe. Registra el equipo primero.")
+        return
 
-    nuevo_jugador = {
-        "id": len(jugadores) + 1,
+    jugadores = leer_json(RUTA)
+    nuevo_id = str(len(jugadores) + 1)
+
+    nuevo = {
+        "id": int(nuevo_id),
         "nombre": nombre,
         "posicion": posicion,
-        "dorsal": dorsal,
+        "numero": numero,
         "equipo_id": equipo_id
     }
 
-    jugadores.append(nuevo_jugador)
-    guardar_json(RUTA_JUGADORES, jugadores)
+    jugadores[nuevo_id] = nuevo
+    guardar_json(RUTA, jugadores)
     print("✅ Jugador registrado correctamente.")
 
 def listar_jugadores():
-    jugadores = leer_json(RUTA_JUGADORES)
-    print("\n👥 Lista de Jugadores:")
-    for j in jugadores:
-        print(f"{j['id']} - {j['nombre']} ({j['posicion']}) - Equipo ID: {j['equipo_id']}")
+    jugadores = leer_json(RUTA)
+    equipos = leer_json(RUTA_EQUIPOS)
+
+    if not jugadores:
+        print("📭 No hay jugadores registrados.")
+        return
+
+    print("\n📋 Lista de Jugadores Registrados:\n")
+    print("{:<5} {:<25} {:<15} {:<10} {:<20}".format("ID", "Nombre", "Posición", "Número", "Equipo"))
+    print("-" * 80)
+
+    for jg in jugadores.values():
+        equipo_nombre = equipos.get(jg["equipo_id"], {}).get("nombre", "Desconocido")
+        print("{:<5} {:<25} {:<15} {:<10} {:<20}".format(
+            jg["id"], jg["nombre"], jg["posicion"], jg["numero"], equipo_nombre
+        ))
