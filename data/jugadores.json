@@ -1,9 +1,16 @@
 {
-  "1": {
-    "id": 1,
-    "nombre": "Luka Modrić",
-    "posicion": "Centrocampista",
-    "numero": "10",
-    "equipo_id": "1"
-  }
+    "1": {
+        "id": 1,
+        "nombre": "Luka Modrić",
+        "posicion": "Centrocampista",
+        "numero": "10",
+        "equipo_id": "1"
+    },
+    "2": {
+        "id": 2,
+        "nombre": "pablo",
+        "posicion": "delantero",
+        "numero": "3",
+        "equipo_id": "2"
+    }
 }

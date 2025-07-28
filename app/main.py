@@ -1,3 +1,9 @@
+"""
+autor:valentina mancilla
+descripcion: ligabetplay 2.0
+fecha:27/07/2025
+"""
+
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
